@@ -1,18 +1,20 @@
 #include "main.h"
 /**
- * main - Entry point
- * Descriptio: 'prints -putchar to stdout'
- * Return@ alwaus 0
+ * main - print -putchar
+ * is written by mbah
+ * Return: 0
  */
-int main(void)
+
+init main(void)
 {
-	-putchar('_');
-        -putchar('p');
-	-putchar('u');
-	-putchar('t');
-	-putchar('£');
-	-putchar('a');
-	-putchar('r');
-	-putchar('\n');
-	return (0);
+-putchar('_');
+-putchar('p');
+-putchar('u');
+-putchar('t');
+-putchar('c');
+-putchar('h');
+-putchar('a');
+-putchar('r');
+-putchar('\n');
+return (0);
 }
