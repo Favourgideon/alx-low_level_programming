@@ -1,11 +1,14 @@
 #include "holberton.h"
 #include <stdio.h>
+
 /**
- * set_string - redirect.
- * @s: double pointer to address
- * @to: the original pointer
+ * set_string - sets the value of a pointer to a char
  *
- * Return: chessboard.
+ * @s: double pointer
+ * @to: pointer
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
 void set_string(char **s, char *to)
 {
