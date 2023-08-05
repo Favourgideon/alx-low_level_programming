@@ -1,42 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <string.h>
 
 /**
- * main - Program that adds positive numbers
-
- * @argc: This is the argument count
- * @argv: This is the argument vector
- *
- * Return: 0;
+ * main - function to add variables
+ * @argc: number of arguments
+ * @argv: arguments being passed
+ * Return: Always 0 or 1
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int sum = 0, i;
+	int a, b, addition;
 
-	if (argc > 1)
+	for (a = 1; a < argc; a++)
 	{
-		for (i = 1; i < argc; i++)
+		for (b = 0; argv[a][b] != '\0'; b++)
 		{
-			int b;
-			char *str;
-
-			str = argv[i];
-			for (b = 0; str[b] != '\0'; b++)
+			if (!isdigit(argv[a][b]))
 			{
-				if (str[b] < 48 || str[b] > 57)
-				{
-					printf("Error\n");
-					return (1);
-				}
+				printf("Error\n");
+				return (1);
 			}
 		}
+		addition = addition + atoi(argv[a]);
 	}
-	for (i = 1; i < argc; i++)
-	{
-		sum += atoi(argv[i]);
-	}
-	printf("%d\n", sum);
+	printf("%i\n", addition);
 	return (0);
 }
