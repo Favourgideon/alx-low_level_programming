@@ -1,71 +1,50 @@
-#include "holberton.h"
-
+#include "main.h"
+#include <stdlib.h>
 /**
- * _strcat - Concat string, src appended to dest
- *
- * @dest: Destination string
- * @src: Source string
- * Return: Concat newString to dest
- */
-char *_strcat(char *dest, char *src)
-{
-        int a, b;
-
-        for (a = 0; dest[a] != '\0'; a++)
-                ;
-        for (b = 0; src[b] != '\0'; b++)
-        {
-                dest[a] = src[b];
-                a++;
-        }
-        return (dest);
-}
-
-/**
- * _strlen - Return the number of the length of the string
- *
- * @s: This is the string to check
- *
- * Return: Return the length of the string
- */
-int _strlen(char *s)
-{
-	int a;
-
-	for (a = 0; s[a] != '\0'; a++)
-		;
-	return (a);
-}
-
-/**
- * argstostr - Concats argv to new string
- *
- * @ac: Argument count
- * @av: Arguments
- *
- * Return: Returns a pointer to a new string, or NULL if it fails
- */
-
+  *argstostr - concatenates all arguments of the program.
+  *@ac: argument count.
+  *@av: pointer to array of size ac.
+  *Return: NULL if ac == 0 or av == null, Pointer to new string.
+  *NULL on fail.
+  */
 char *argstostr(int ac, char **av)
 {
-	int index, sumString;
-	char *newString;
+	int i, j, k, size;
+	char *arg;
 
-	sumString = 1;
-
+	size = 0;
+	k = 0;
 	if (ac == 0 || av == NULL)
-		return (0);
-	for (index = 0; index < ac && av[index]; index++)
-	{
-		sumString += _strlen(av[index]);
-	}
-	newString = malloc((sumString * sizeof(char)) + ac);
-	for (index = 0; index < ac && av[index]; index++)
-	{
-		newString = _strcat(newString, av[index]);
-		newString = _strcat(newString, "\n");
-	}
-	if (newString == NULL)
 		return (NULL);
-	return (newString);
+	i = 0;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			size++;
+			j++;
+		}
+		size++;
+		i++;
+	}
+	arg = malloc((sizeof(char) * size) + 1);
+	if (arg == NULL)
+		return (NULL);
+	i = 0;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			arg[k] = av[i][j];
+			j++;
+			k++;
+		}
+		arg[k] = '\n';
+		k++;
+		i++;
+	}
+	arg[k] = '\0';
+	return (arg);
 }
