@@ -1,33 +1,36 @@
-#include <stdio.h>
 
-unsigned int binary_to_uint(const char *b) {
-    if (b == NULL)
-        return 0;
+/**
+ * binary_to_uint - converts a binary number to an
+ * unsigned int.
+ * @b: binary.
+ *
+ * Return: unsigned int.
+ */
+unsigned int binary_to_uint(const char *b)
+{
+	unsigned int ui;
+	int len, base_two;
 
-    unsigned int result = 0;
-    int shift = 0;
+	if (!b)
+		return (0);
 
-    while (*b) {
-        if (*b == '0' || *b == '1') {
-            result = (result << 1) | (*b - '0');
-            b++;
-        } else {
-            return 0; // Invalid character in the string
-        }
-    }
+	ui = 0;
 
-    return result;
-}
+	for (len = 0; b[len] != '\0'; len++)
+		;
 
-int main() {
-    const char *binary_string = "1101"; // Change this to your binary input
-    unsigned int result = binary_to_uint(binary_string);
+	for (len--, base_two = 1; len >= 0; len--, base_two *= 2)
+	{
+		if (b[len] != '0' && b[len] != '1')
+		{
+			return (0);
+		}
 
-    if (result != 0) {
-        printf("Converted: %u\n", result);
-    } else {
-        printf("Invalid binary input\n");
-    }
+		if (b[len] & 1)
+		{
+			ui += base_two;
+		}
+	}
 
-    return 0;
+	return (ui);
 }
