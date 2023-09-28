@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <main.h>
 
 void print_binary(unsigned long int n) {
     if (n == 0) {
@@ -21,8 +21,7 @@ void print_binary(unsigned long int n) {
 }
 
 int main() {
-    unsigned long int num = 42; // Change this to your input number
-    printf("Binary representation of %lu is: ", num);
+    unsigned long int num = 42; // Change this to your input number    printf("Binary representation of %lu is: ", num);
     print_binary(num);
     putchar('\n');
     return 0;
